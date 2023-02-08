@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href='/static/final.css' />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>File Upload </title>
+  </head>
+  <body>
+
+    <br>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput">
+      <input type="submit" value="Upload" id="submitButton" disabled>
+    </form>
+    
+    <script>
+    const fileInput = document.getElementById("fileInput");
+    const submitButton = document.getElementById("submitButton");
+    
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        submitButton.disabled = false;
+      } else {
+        submitButton.disabled = true;
+      }
+    });
+    </script>
+    
+    <br>
+    <br>
+    <br>
+    <table>
+      <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+      {% if error %}
+        <tr>
+          <td style="color: red">Error</td>
+          <td>{{ error }}</td>
+        </tr>
+      {% endif %}
+      {% if heart_rate1 %}
+        <tr>
+          <td>Heart Rate</td>
+          <td>{{ heart_rate1 }}</td>
+        </tr>
+      {% endif %}
+      {% if S_wave1 %}
+        <tr>
+          <td>S Wave</td>
+          <td>{{ S_wave1 }}</td>
+        </tr>
+      {% endif %}
+      {% if P_wave1 %}
+        <tr>
+          <td>P Wave</td>
+          <td>{{ P_wave1 }}</td>
+        </tr>
+      {% endif %}
+      {% if Q_wave1 %}
+        <tr>
+          <td>Q Wave</td>
+          <td>{{ Q_wave1 }}</td>
+        </tr>
+      {% endif %}
+      {% if qrs1 %}
+        <tr>
+          <td>QRS Complex</td>
+          <td>{{ qrs1 }}</td>
+        </tr>
+      {% endif %}
+      {% if R_wave1 %}
+        <tr>
+          <td>R Wave</td>
+          <td>{{ R_wave1 }}</td>
+        </tr>
+      {% endif %}
+      {% if T_wave1 %}
+        <tr>
+          <td>T Wave</td>
+          <td>{{ T_wave1 }}</td>
+        </tr>
+      {% endif %}
+      {% if PR_interval1 %}
+        <tr>
+          <td>PR Interval</td>
+          <td>{{ PR_interval1 }}</td>
+        </tr>
+      {% endif %}
+      {% if QT_interval1 %}
+        <tr>
+          <td>QT Interval</td>
+          <td>{{ QT_interval1 }}</td>
+        </tr>
+      {% endif %}
+    </table>
+    
+    <div class="result">
+      {% if cond %}
+        <p>Result</p>
+        <p>{{ cond }}</p>
+      {% endif %}
+    </div>
+
+  </body>
+</html>

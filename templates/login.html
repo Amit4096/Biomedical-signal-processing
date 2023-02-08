@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href='/static/index.css' />
+        <title>Login</title>
+        <script>
+            function showAlert() {
+                alert("Invalid username or password. Please try again.");
+            }
+        </script>
+    </head>
+    <body>
+ 
+        <form method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Login">
+            <br>
+            <br>
+        
+            <!-- <button type="button">
+                <a href="/signup">Sign Up</a>
+              </button> -->
+        </form>
+        {% if error %}
+            <script>showAlert();</script>
+        {% endif %}
+    </body>
+</html>

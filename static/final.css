@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F2F2F2;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 36px;
+    color: #333;
+  }
+  
+  form {
+    margin: 0 auto;
+    width: 300px;
+    padding: 50px;
+    background-color: #FFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid #333;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #337ab7;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #555;
+  }
+  
+  p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  p.error {
+    color: red;
+    font-weight: bold;
+  }
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #3e8e41;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #333;
+  }
+
+  .result {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .result p:first-child {
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+  }
