@@ -168,7 +168,8 @@ def home():
         PR_segment1=0
         ST_segment1=0
         k=1
-        for i in range(0,10):
+        
+        for i in range(0, len(maxtab) - 1):
             t=math.floor(maxtab[i][0])
             s=math.floor(maxtab[i+1][0])
             half=int((s-t)/2)
@@ -196,7 +197,7 @@ def home():
             
             #S wave peaks
             i=rpos
-            while(epoc[i]>epoc[i+1]):
+            while i < len(epoc) - 1 and epoc[i] > epoc[i+1]:
                 i=i+1
             speak=epoc[i]
             spos=i
@@ -209,7 +210,7 @@ def home():
                 g=g+1
             printerval2=i
             l=0
-            while(epoc[j]<epoc[j+1] and l<=9):
+            while j < len(epoc) - 1 and epoc[j] < epoc[j+1] and l <= 9:
                 j=j+1
                 l=l+1
             stsegment1=j
@@ -230,8 +231,8 @@ def home():
             i=ppos
             j=i
             pp=[]
-            if(epoc[ppos]>avg):
-                while((epoc[i]>epoc[i-1] or epoc[i]>epoc[j+8] )and i>(ppos-25)):
+            if ppos < len(epoc) and epoc[ppos] > avg:
+                while i > (ppos - 25) and i > stsegment1 and (epoc[i] > epoc[i-1] or epoc[i] > epoc[j+8]):
                     pp.append([i,epoc[i]])
                     i=i-1
                 while(((epoc[j]>epoc[j+1] or epoc[j]>epoc[j+8])and i<(ppos+24)) and j<(printerval2-2)):
@@ -254,13 +255,13 @@ def home():
             i=tpos
             j=i
             tt=[]
-            if(epoc[tpos]>avg):
-                while(((epoc[i]>epoc[i-1] or epoc[i]>epoc[j+9] )and i>(tpos-55)) and i>(stsegment1-2) ):
-                    tt.append([i,epoc[i]])
-                    i=i-1
-                while((epoc[j]>epoc[j+1] or epoc[j]>epoc[j+7])and i<(tpos+28)):
-                    tt.append([j,epoc[j]])
-                    j=j+1
+            if tpos < len(epoc) and epoc[tpos] > avg:
+                while i > stsegment1 - 2 and i > tpos - 55 and j + 9 < len(epoc) and i < len(epoc) and (epoc[i] > epoc[i - 1] or epoc[i] > epoc[j + 9]):
+                    tt.append([i, epoc[i]])
+                    i -= 1
+                while j < len(epoc) - 1 and j + 7 < len(epoc) and epoc[j] > epoc[j+1] and epoc[j] > epoc[j+7] and i < (tpos+28):
+                    tt.append([j, epoc[j]])
+                    j += 1
             else:
                 i=0
                 j=0
@@ -278,7 +279,6 @@ def home():
             epoc_duration=int(v*1000)
             
 
-            example_ECG1 = [[heart_rate, epoc_duration,ppos,qpos,rpos,spos,tpos, P_wave, Q_wave, qrs, R_wave,S_wave, T_wave, PR_interval, QT_interval, PR_segment, ST_segment]]
             
             heart_rate1=(heart_rate1*(k-1)+heart_rate)/k
             epoc_duration1=(epoc_duration1*(k-1)+epoc_duration)/k
@@ -299,7 +299,7 @@ def home():
             ST_segment1=(ST_segment1*(k-1)+ST_segment)/k
             print(S_wave1)
             heart_data = pd.read_csv('final.csv')
-           
+            
 
 
 
